@@ -1,45 +1,43 @@
-// główna część
-const problemsAdd = []
+const problems = []
 const possibilities = ["Easyyyy! just love..", "You must take credit for it!", "You must go to to the Gym!", "Just hard work!"];
-const btnAdd = document.querySelector('.addProblem');
-const btnAdv = document.querySelector('.advice');
+const btnAddProblem = document.querySelector('.addProblem');
+const btnAddAdvice = document.querySelector('.advice');
 const inputProblem = document.querySelector('.problem');
-const possibilitiesAdd = document.querySelector('.possibilities');
+const inputPossibilities = document.querySelector('.possibilities');
 const div = document.querySelector('div');
 const divsAnimation = document.querySelectorAll('div')
 
 
 
-btnAdd.addEventListener('click', () => {
+btnAddProblem.addEventListener('click', () => {
   const nameProblem = inputProblem.value;
   if (nameProblem) {
-    problemsAdd.push(nameProblem)
+    problems.push(nameProblem)
   } else {
     alert("really?!\n\n You don't have problem!?\n\n Write Your problem...");
     return
   }
   inputProblem.value = ""
   console.log(nameProblem);
-
 })
 
 const adviceResult = () => {
-  const namePas = possibilitiesAdd.value;
-  if (problemsAdd > "" && namePas) {
+  const namePas = inputPossibilities.value;
+  if (problems > "" && namePas) {
     possibilities.push(namePas);
     showResult()
-  } else if (problemsAdd > "" && namePas === "") {
+  } else if (problems > "" && namePas === "") {
     alert("really?!?\n\n You don't have idea!?\n\n Write Your idea.. ")
   } else alert(" 1.Write Your problem..\n\n 2.Write Your idea..  ")
-  possibilitiesAdd.value = "";
+  inputPossibilities.value = "";
 }
 
-btnAdv.addEventListener('click', adviceResult)
+btnAddAdvice.addEventListener('click', adviceResult)
 
 const showResult = () => {
   const indexName = (Math.floor(Math.random() * possibilities.length));
-  const indexNameA = (Math.floor(Math.random() * problemsAdd.length));
-  div.textContent = `hmm.. ${problemsAdd[indexNameA]} so..  ${possibilities[indexName]}`
+  const indexNameA = (Math.floor(Math.random() * problems.length));
+  div.textContent = `hmm.. ${problems[indexNameA]} so..  ${possibilities[indexName]}`
   console.log(indexName);
 }
 
@@ -55,8 +53,8 @@ const enterKey = (e) => {
 }
 
 
-possibilitiesAdd.addEventListener('keydown', enterKey)
-// do analizy^^^ nie działa tak jak trzeba 
+inputPossibilities.addEventListener('keydown', enterKey)
+
 
 
 
